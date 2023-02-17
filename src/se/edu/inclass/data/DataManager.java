@@ -17,7 +17,7 @@ public class DataManager {
 
     public DataManager(String fileName) {
         dataFile = new File(fileName);
-    }
+    } //file class
 
     public File getDataFile() {
         return dataFile;
@@ -45,9 +45,10 @@ public class DataManager {
         if (dataFile.length() == 0) {
             System.out.println("empty file");
             throw new IOException();
+            //
         }
         ArrayList<String> dataItems = (ArrayList) Files.readAllLines(dataFile.toPath(), Charset.defaultCharset());
-
+        //toPath() - get the file path // get all the line and close file
         return dataItems;
     }
 
@@ -57,7 +58,7 @@ public class DataManager {
             ArrayList<String> dataItems = readFile();
             taskList = parse(dataItems);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("File access issues.");
         }
         return taskList;
     }
